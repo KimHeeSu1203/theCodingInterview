@@ -30,7 +30,6 @@ def testDict(dictData_Values):
     return True
 
 
-
 class palindrome(unittest.TestCase): #문제에서 대문자/소문자 구별 없이, 그리고 띄어쓰기는 무시하겠다 라는 것을 언급해야
     datas = ['tacTcoaa'] #대문자 확인하고싶어서 넣음
 

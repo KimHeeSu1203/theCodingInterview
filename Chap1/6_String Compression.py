@@ -8,14 +8,15 @@ def makeCompression(str_data): #아스키 코드 변환 시 대 -> 소 + 32 / �
             comp.append(oneStr)
             comp.append(1)
         else:
-            if(comp[-2:-1] == oneStr):
+            if(comp[-2:-1][0] == oneStr):
                 num = comp.pop()
                 comp.append(num+1)
             else:
                 comp.append(oneStr)
                 comp.append(1)
 
-    print(comp)
+    strComp = ''.join(comp)
+    print(strComp)
     return comp
 
 
