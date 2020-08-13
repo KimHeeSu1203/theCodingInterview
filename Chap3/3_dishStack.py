@@ -1,43 +1,42 @@
 import random
 
-class Stack():
+class setOfStack():
+    def __init__(self):
+        self.dishStack = []
+        self.dishLimit = 3
 
     def pop(self):
-        if len(self.stack) > 0 :
-            result = self.stack.pop()
-        else:
-            result = None
-            print("Out of range")
+        if len(self.dishStack) == 0:
+                print("No dish")
+                return 0
 
-        return result
-
-    def push(self,item):
-        self.stack.append(item)
-
-    def peek(self):
-        return self.stack[-1]
-
-    def isEmpty(self):
-        if len(self.stack) == 0:
-            return True
-        else:
-            return False
-
-class setOfStacks(Stack):
-    dishStack = []
+        if len(self.dishStack[-1]) > 0:
+            self.dishStack[-1].pop()
+            if len(self.dishStack[-1]) == 0:
+                self.dishStack.pop()
 
 
 
 
+    def push(self,data):
+        # 이미 아무것도 없을때, 다 찼을 때
+        if len(self.dishStack) == 0:
+            dishStack = []
+            self.dishStack.append(dishStack)
+
+        elif len(self.dishStack[-1]) == self.dishLimit:
+            dishStack = []
+            self.dishStack.append(dishStack)
+
+        self.dishStack[-1].append(data)
 
 
-
-
-
-
-
-N = 10
-
-dish = Stack()
-for _ in range(N):
+dish = setOfStack()
+for _ in range(10):
     dish.push(random.randint(0,5))
+    print(dish.dishStack)
+
+
+for _ in range(11):
+    dish.pop()
+    print(dish.dishStack)
