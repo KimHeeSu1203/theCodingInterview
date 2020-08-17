@@ -1,49 +1,57 @@
-class Queue():
-    queue = []
+import random
+
+
+class Stack():
+    def __init__(self):
+        self.stack = []
+
     def pop(self):
-        if len(self.queue) > 0 :
-            result = self.queue.pop(0)
+        if len(self.stack) > 0:
+            return self.stack.pop()
         else:
-            result = None
             print("Out of range")
 
-        return result
-
-    def push(self,item):
-        self.queue.append(item)
+    def push(self, item):
+        self.stack.append(item)
 
     def peek(self):
-        return self.queue[-1]
+        return self.stack[-1]
 
     def isEmpty(self):
-        if len(self.queue) == 0:
+        if len(self.stack) == 0:
             return True
         else:
             return False
 
-    def min(self):
-        temp = []
-        min = 999
-        for _ in range(len(self.queue)):
-            min_a = self.queue.pop(0)
-            temp.append(min_a) #새로 팝한 애가 min
-            if min > min_a:
-                min = min_a
 
-        for _ in range(len(temp)):
-            min_b = temp.pop(0)
-            queue.push(min_b)
+class MyQueue():
+    def __init__(self):
+        self.stack1 = Stack()
+        self.stack2 = Stack()
 
-        return min
+    def pop(self):
+        for _ in range(len(self.stack1.stack)):
+            self.stack2.push(self.stack1.pop())
+        self.stack2.pop()
+        print(self.stack1.stack)
+        print(self.stack2.stack)
+        print("-----------------")
+
+    def push1(self, item):
+        self.stack1.push(item)
+        print(self.stack1.stack)
+        print(self.stack2.stack)
+        print(self.stack1)
+        print(self.stack2)
+
+        print("-----------------")
 
 
-queue = Queue()
-queue.push(2)
-print(queue.min())
-queue.push(3)
-print(queue.min())
-queue.push(1)
-print(queue.min())
-queue.push(4)
-print(queue.min())
+test = MyQueue()
+for _ in range(10):
+    test.push1(random.randint(0, 5))
 
+"""
+for _ in range(11):
+    test.pop()
+"""
